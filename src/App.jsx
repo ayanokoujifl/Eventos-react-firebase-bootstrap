@@ -1,10 +1,7 @@
-import { useState } from 'react'
-
+import { Login } from "./components/login/login";
 
 function App() {
-  return(
-    <h1>Olá mundo</h1>
-  )
+  return <Login />;
 }
 
-export default App
+export default App;
