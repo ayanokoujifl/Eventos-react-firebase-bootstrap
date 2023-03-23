@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import "./login.css";
-
-function logar() {
-  alert("vamos logar");
-}
+import { Link } from "react-router-dom";
 
 export function Login() {
   const [email, setEmail] = useState();
   const [senha, setSenha] = useState();
+  const [msgTipo, setMsgTipo] = useState();
+
+  function logar() {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, senha)
+      .then(() => {
+        setMsgTipo("sucesso");
+      })
+      .catch(() => {
+        setMsgTipo("erro");
+      });
+  }
 
   return (
     <>
@@ -21,7 +31,7 @@ export function Login() {
             width="72"
             height="57"
           />
-          <h1 className="h3 mb-3 fw-normal text-white fw-bold">
+          <h1 className="h3 mb-3 fw-normal text-white fw-bold text-center">
             Sign In Please
           </h1>
 
@@ -54,19 +64,25 @@ export function Login() {
           </button>
 
           <div className="msg-login text-white text-center my-4">
-            <span>
-              <strong>WoW!</strong> Você está conectado
-            </span>
-            <span>
-              <strong>Ops!</strong> Verifique se a senha ou usuários estão
-              corretos
-            </span>
+            {msgTipo === "sucesso" && (
+              <span>
+                <strong>WoW!</strong> Você está conectado
+              </span>
+            )}
+            {msgTipo === "erro" && (
+              <span>
+                <strong>Ops!</strong> Verifique se a senha ou usuários estão
+                corretos
+              </span>
+            )}
           </div>
 
           <div className="opcoes-login mt-5">
             <a className="mt-3 mb-3  text-center">Recuperar Senha</a>
             <span className="mt-3 mb-3  text-center text-white">&#9885;</span>
-            <a className="mt-3 mb-3 text-center">Cadastrar agora</a>
+            <Link className="mt-3 mb-3 text-center" to="create">
+              Cadastrar agora
+            </Link>
           </div>
         </form>
       </div>
