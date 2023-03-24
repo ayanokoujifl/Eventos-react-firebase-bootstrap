@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
 import "./nav.css";
+import Logo from "../../assets/EVENTOS.png";
 
 export function Nav() {
   return (
     <>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <span class="navbar-brand text-white fw-bold">Eventos</span>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <img className="navbar-brand" src={Logo} alt="" />
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -15,14 +17,24 @@ export function Nav() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/create">
+                  Cadastrar
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/login">
+                  Login
+                </Link>
               </li>
             </ul>
           </div>

@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import "./create.css";
 import { firebase } from "../../config/firebase";
+import { Nav } from "../navbar/nav";
 
 export function Create() {
   const [email, setEmail] = useState();
@@ -51,6 +52,7 @@ export function Create() {
 
   return (
     <>
+      <Nav />
       <div className="form-cadastro">
         <form action="" className="text-center form-login mx-auto mt-5">
           <h1 className="h3 mb-3 fw-bold">Cadastro</h1>

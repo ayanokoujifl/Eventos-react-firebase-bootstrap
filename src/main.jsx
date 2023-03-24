@@ -8,15 +8,15 @@ import { Home } from "./components/home/home";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <Home />,
   },
   {
     path: "/create",
     element: <Create />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

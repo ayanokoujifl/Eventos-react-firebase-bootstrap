@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 import "./login.css";
-import { Link } from "react-router-dom";
+import Logo from "../../assets/EVENTOS.png";
 
 export function Login() {
   const [email, setEmail] = useState();
@@ -24,13 +25,7 @@ export function Login() {
     <>
       <div className="login-content d-flex align-items-center">
         <form className="form-signin mx-auto">
-          <img
-            className="mb-4"
-            src="/docs/5.3/assets/brand/bootstrap-logo.svg"
-            alt=""
-            width="72"
-            height="57"
-          />
+          <img src={Logo} alt="" className="logo" />
           <h1 className="h3 mb-3 fw-normal text-white fw-bold text-center">
             Sign In Please
           </h1>
@@ -77,10 +72,10 @@ export function Login() {
             )}
           </div>
 
-          <div className="opcoes-login mt-5">
-            <a className="mt-3 mb-3  text-center">Recuperar Senha</a>
-            <span className="mt-3 mb-3  text-center text-white">&#9885;</span>
-            <Link className="mt-3 mb-3 text-center" to="create">
+          <div className="opcoes-login mt-1 ">
+            <a className="mt-2 mb-2  text-center">Recuperar Senha</a>
+            <span className="mt-2 mb-2  text-center text-white">&#9885;</span>
+            <Link className="mt-2 mb-2 text-center" to="create">
               Cadastrar agora
             </Link>
           </div>

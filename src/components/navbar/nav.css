@@ -1,3 +1,19 @@
 .navbar {
+  padding: 0;
   background-color: #614ea6;
+}
+
+.navbar-brand {
+  cursor: default;
+  padding: 0;
+  height: 15vh;
+}
+
+.nav-item a {
+  color: #fff;
+  transition: 0.3s ease-in;
+}
+
+.nav-item a:hover {
+  color: #160066;
 }
