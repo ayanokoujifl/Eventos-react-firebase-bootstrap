@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import "./nav.css";
 import Logo from "../../assets/EVENTOS.png";
+import { useDispatch, useSelector } from "react-redux";
 
 export function Nav() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -26,16 +29,46 @@ export function Nav() {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/create">
-                  Cadastrar
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/login">
-                  Login
-                </Link>
-              </li>
+
+              {useSelector((state) => state.usuarioLogado) > 0 ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="">
+                      Publicar Evento
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="">
+                      Meus eventos
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      onClick={() => {
+                        dispatch({ type: "LOG_OUT", usuarioEmail: email });
+                      }}
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : null}
+
+              {useSelector((state) => state.usuarioLogado) > 0 ? null : (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" aria-current="page" to="/create">
+                      Cadastrar
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" aria-current="page" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

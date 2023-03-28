@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
-
+import { Link, redirect, Router, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./login.css";
 import Logo from "../../assets/EVENTOS.png";
 
@@ -9,12 +9,17 @@ export function Login() {
   const [email, setEmail] = useState();
   const [senha, setSenha] = useState();
   const [msgTipo, setMsgTipo] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function logar() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, senha)
       .then(() => {
         setMsgTipo("sucesso");
+        setTimeout(() => {
+          dispatch({ type: "LOG_IN", usuarioEmail: email });
+        },2000);
       })
       .catch(() => {
         setMsgTipo("erro");
@@ -24,6 +29,9 @@ export function Login() {
   return (
     <>
       <div className="login-content d-flex align-items-center">
+        {useSelector((state) => state.usuarioLogado) > 0
+          ? (() => navigate("/"))()
+          : null}
         <form className="form-signin mx-auto">
           <img src={Logo} alt="" className="logo" />
           <h1 className="h3 mb-3 fw-normal text-white fw-bold text-center">
