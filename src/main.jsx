@@ -6,6 +6,7 @@ import { Create } from "./components/create/create";
 import { Home } from "./components/home/home";
 import store from "./store/index";
 import { Provider } from "react-redux";
+import { Recover } from "./components/recoverPassword/recover";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/recover",
+    element: <Recover />,
   },
 ]);
 

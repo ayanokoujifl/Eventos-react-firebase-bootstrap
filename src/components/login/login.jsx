@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, redirect, Router, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./login.css";
 import Logo from "../../assets/EVENTOS.png";
@@ -19,7 +19,7 @@ export function Login() {
         setMsgTipo("sucesso");
         setTimeout(() => {
           dispatch({ type: "LOG_IN", usuarioEmail: email });
-        },2000);
+        }, 2000);
       })
       .catch(() => {
         setMsgTipo("erro");
@@ -81,9 +81,11 @@ export function Login() {
           </div>
 
           <div className="opcoes-login mt-1 ">
-            <a className="mt-2 mb-2  text-center">Recuperar Senha</a>
+            <Link to="/recover" className="mt-2 mb-2  text-center">
+              Recuperar Senha
+            </Link>
             <span className="mt-2 mb-2  text-center text-white">&#9885;</span>
-            <Link className="mt-2 mb-2 text-center" to="create">
+            <Link className="mt-2 mb-2 text-center" to="/create">
               Cadastrar agora
             </Link>
           </div>

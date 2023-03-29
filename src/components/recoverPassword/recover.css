@@ -1,0 +1,17 @@
+.btn-submit {
+  background-color: #614ea6;
+  color: #fff;
+  transition: 200ms;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.btn-submit:hover {
+  color: #fff;
+  background-color: #614ea6c9;
+}
+
+.container-form-recover {
+  display: block;
+  width: 40%;
+}
